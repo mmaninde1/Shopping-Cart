@@ -1,16 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#">
+			<img src="images/logo.png" width="50" height="50" alt="">
+		  </a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			  <span class="navbar-toggler-icon"></span>
+			</button>
 
-    <script src="jquery/jquery.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		  <ul class="navbar-nav ml-auto">
+			<li class="nav-item">
+				<input class="form-control" type="text" onkeyup="searchProducts()" id="searchText" placeholder="Search Products" aria-label="Search">
+			</li>
+			<li class="nav-item" id="logoutloginli">
+				<a class="nav-link" data-toggle="modal" data-target="#loginModal" href="#">Sign Up | Log In</a>
+			</li>
+		  </ul>
+		</div>
+	  </nav>
+
+		<!-- Modal -->
+	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Log In</h5>
+			</div>
+			<div class="modal-body">
+				<form onsubmit="login(); return false;">
+					<div class="form-group">
+					  <label for="exampleInputEmail1">Email address</label>
+					  <input type="email" class="form-control" id="loginemail" aria-describedby="emailHelp" placeholder="Enter email" required>
+					  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+					</div>
+					<div class="form-group">
+					  <label for="exampleInputPassword1">Password</label>
+					  <input type="password" class="form-control" id="loginpass" placeholder="Password" required>
+					</div>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				  </form>
+				  <br>
+			</div>
+		</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<br>
+		<div class="carthomelogo mx-auto d-block">
+			<a onclick="cart()" data-toggle="modal"><img src="images/cart.png" class="mx-auto d-block" width="90"></a>
+			<span id="countofcart">0</span>
+		</div>
+		<br>
+	</div>
+
+	<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Cart</h5>
+			<button type="button" class="btn btn-primary" onclick="clearCart()">
+				<span aria-hidden="true">Clear Cart</span>
+			  </button>
+			</div>
+			<div class="modal-body">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+						  <th scope="col">Name</th>
+						  <th scope="col">Price</th>
+						  <th scope="col">Quantity & Action</th>
+						</tr>
+					  	</thead>
+					  	<tbody id="carttable">
+						</tbody>
+				</table>
+				  <br>
+			</div>
+		</div>
+		</div>
+	</div>
+
+	<!-- you must lgged in modal-->
+	<div class="modal fade" id="loggedinModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-body">
+				<p>You must Logged In to View Cart.</p>
+				  <br>
+			</div>
+		</div>
+		</div>
+	</div>
+
+	<!-- Invalid credentaisl in modal-->
+	<div class="modal fade" id="invalidcredentials" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-body">
+				<p>Invalid Email/Password. Enter Valid Credentials</p>
+				  <br>
+			</div>
+		</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<ul class="list-inline text-center category">
+			<li class="list-inline-item">All</li>
+			<li class="list-inline-item">Chocolate</li>
+			<li class="list-inline-item">Milk</li>
+			<li class="list-inline-item">Peanuts</li>
+		  </ul>
+	</div>
+	<div class="container">
+		<div id="allproducts">
+
+		</div>
+	</div>
+
+
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/productsdata.js"></script>
 </body>
 </html>

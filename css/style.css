@@ -1,0 +1,20 @@
+body
+{
+    margin: 0;
+    padding: 0;
+}
+#countofcart
+{
+    position: absolute;
+    top: 12.5%;
+    left: 53%;
+    font-size: 25px;
+    font-weight: bold;
+    color: grey;
+}
+.category>li
+{
+    border: 1px solid black;
+    padding: 6px 11px;
+    border-radius: 5px;
+}
